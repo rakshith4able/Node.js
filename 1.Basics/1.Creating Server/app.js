@@ -6,6 +6,16 @@ const http=require('http');
 const server=http.createServer((req,res)=>{
 // Accessing request properties
 console.log(req.url,req.method,req.headers);
+
+// Routing the requests
+let url=req.url;
+if(url==="/"){
+res.write("<html>");
+res.write("<body><form action='/message' method='post'><input type='text'/> <input type='submit' value='submit' /> </form></body>");
+return res.end();
+}
+
+
 // Sending response
 res.setHeader('Content-type','text/html');
 res.write("<html>");
